@@ -1,4 +1,6 @@
 .app {
+    display: grid;
+    place-items: center;
     background-color: #dadbd3;
     height: 100vh;
 }
@@ -6,6 +8,8 @@
 .app__body {
     display: flex;
     background-color: #ededed;
+    margin-top: -50px;
     width: 90vw;
     height: 90vh;
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.5);
 }
