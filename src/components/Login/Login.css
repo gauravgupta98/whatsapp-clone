@@ -1,5 +1,5 @@
 .login {
-    background-color: white;
+    background-color: black;
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -9,9 +9,9 @@
 .login__container {
     padding: 100px;
     text-align: center;
-    background-color: white;
+    background-color: rgb(25, 25, 25);
     border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px;
+    box-shadow: 0 1px 3px rgba(230, 218, 218, 0.12);
 }
 
 .login__container>img {
@@ -24,5 +24,9 @@
     margin-top: 50px;
     text-transform: inherit !important;
     background-color: #0a8d48 !important;
+    color: white;
+}
+
+.login__text {
     color: white;
 }
