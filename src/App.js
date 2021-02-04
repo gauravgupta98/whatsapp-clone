@@ -23,7 +23,7 @@ function App() {
                 <Chat />
               </Route>
               <Route path="/">
-                <h1>Hello</h1>
+                <Sidebar />
               </Route>
             </Switch>
           </Router>

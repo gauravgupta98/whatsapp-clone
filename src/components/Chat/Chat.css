@@ -84,6 +84,10 @@
     display: flex;
 }
 
+.chat__messageText {
+    word-wrap: break-word;
+}
+
 .chat__footer>form>input {
     flex: 1;
     border-radius: 30px;
