@@ -46,6 +46,8 @@ function Chat() {
   const sendMessage = (e) => {
     e.preventDefault();
 
+    if (input.length === 0 || input.trim().length === 0) return;
+
     db.collection("rooms").doc(roomId).collection("messages").add({
       name: user.displayName,
       message: input,
