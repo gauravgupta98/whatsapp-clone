@@ -23,8 +23,11 @@ function Chat() {
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
   const [{ user }, dispatch] = useStateValue();
-  const emojiPickerRef = useRef(null);
 
+  const emojiPickerRef = useRef(null);
+  const messagesRef = useRef(null);
+
+  // setup the room name and populate messages when Chat component is loaded.
   useEffect(() => {
     if (roomId) {
       db.collection("rooms")
@@ -41,12 +44,22 @@ function Chat() {
     }
   }, [roomId]);
 
+  // generate random avatars for chat
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, [roomId]);
 
+  // add event listeners when component is loaded
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);
+
+    if (messagesRef) {
+      messagesRef.current.addEventListener("DOMNodeInserted", (event) => {
+        const { currentTarget: target } = event;
+        target.scroll({ top: target.scrollHeight, behavior: "smooth" });
+      });
+    }
+
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
@@ -120,7 +133,7 @@ function Chat() {
         </div>
       </div>
 
-      <div className="chat__body">
+      <div className="chat__body" ref={messagesRef}>
         {messages.map((message) => (
           <p
             className={`chat__message ${
