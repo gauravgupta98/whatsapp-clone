@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Avatar, IconButton } from "@material-ui/core";
 import {
   AttachFile,
@@ -10,6 +10,7 @@ import {
 } from "@material-ui/icons";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
+import Picker, { SKIN_TONE_MEDIUM_DARK } from "emoji-picker-react";
 
 import db from "../../firebase";
 import "./Chat.css";
@@ -22,6 +23,7 @@ function Chat() {
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
   const [{ user }, dispatch] = useStateValue();
+  const emojiPickerRef = useRef(null);
 
   useEffect(() => {
     if (roomId) {
@@ -43,6 +45,22 @@ function Chat() {
     setSeed(Math.floor(Math.random() * 5000));
   }, [roomId]);
 
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (
+      emojiPickerRef.current &&
+      !emojiPickerRef.current.contains(event.target)
+    ) {
+      hideEmojiPicker();
+    }
+  };
+
   const sendMessage = (e) => {
     e.preventDefault();
 
@@ -55,6 +73,23 @@ function Chat() {
     });
 
     setInput("");
+  };
+
+  const showEmojiPicker = () =>
+    (document.getElementById("emojiPickerContainer").style.display = "block");
+
+  const hideEmojiPicker = () =>
+    (document.getElementById("emojiPickerContainer").style.display = "none");
+
+  const onEmojiClick = (e, emojiObject) => {
+    let cursorPosition = document.getElementById("chatInput").selectionStart;
+    setInput(
+      `${input.slice(0, cursorPosition)}${emojiObject.emoji}${input.slice(
+        cursorPosition
+      )}`
+    );
+
+    hideEmojiPicker();
   };
 
   return (
@@ -102,11 +137,28 @@ function Chat() {
       </div>
 
       <div className="chat__footer">
-        <InsertEmoticon />
+        <div
+          ref={emojiPickerRef}
+          className="chat__emojiPicker"
+          id="emojiPickerContainer"
+          style={{ display: "none" }}
+        >
+          <Picker
+            onEmojiClick={onEmojiClick}
+            disableAutoFocus={true}
+            skinTone={SKIN_TONE_MEDIUM_DARK}
+            groupNames={{ smileys_people: "PEOPLE" }}
+            native
+          />
+        </div>
+        <IconButton onClick={showEmojiPicker}>
+          <InsertEmoticon />
+        </IconButton>
         <form>
           <input
             type="text"
             value={input}
+            id="chatInput"
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a message"
           />

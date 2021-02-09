@@ -103,3 +103,9 @@
 .chat__footer>.MuiSvgIcon-root {
     padding: 10px;
 }
+
+.chat__emojiPicker {
+    z-index: 99;
+    bottom: 120px;
+    position: fixed;
+}

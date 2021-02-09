@@ -11,5 +11,6 @@
     margin-top: -50px;
     width: 90vw;
     height: 90vh;
+    min-width: 900px;
     box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.5);
 }
