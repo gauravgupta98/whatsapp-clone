@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: "12"
       - run: npm ci
-      - run: npm run build
+      - run: CI=false npm run build
       - name: GitHub Action for Firebase
         uses: w9jds/firebase-action@v1.5.0
         with:
