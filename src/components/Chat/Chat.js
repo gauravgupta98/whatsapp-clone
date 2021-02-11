@@ -88,6 +88,33 @@ function Chat() {
     setInput("");
   };
 
+  const startSpeechRecognition = (e) => {
+    if (window.hasOwnProperty("webkitSpeechRecognition")) {
+      // eslint-disable-next-line no-undef
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = true;
+      recognition.interimResults = true;
+
+      recognition.lang = "en-US";
+      recognition.start();
+      recognition.onresult = function (e) {
+        let cursorPosition = document.getElementById("chatInput")
+          .selectionStart;
+        setInput(
+          `${input.slice(0, cursorPosition)}${
+            e?.results[0][0]?.transcript
+          }${input.slice(cursorPosition)}`
+        );
+        recognition.stop();
+      };
+
+      recognition.onerror = function (e) {
+        recognition.stop();
+      };
+    }
+  };
+
   const showEmojiPicker = () =>
     (document.getElementById("emojiPickerContainer").style.display = "block");
 
@@ -179,7 +206,9 @@ function Chat() {
             <Send />
           </button>
         </form>
-        <Mic />
+        <IconButton onClick={startSpeechRecognition}>
+          <Mic />
+        </IconButton>
       </div>
     </div>
   );
