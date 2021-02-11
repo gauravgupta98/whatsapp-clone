@@ -9,9 +9,8 @@
 .login__container {
     padding: 100px;
     text-align: center;
-    background-color: rgb(25, 25, 25);
+    background-color: #383838;
     border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(230, 218, 218, 0.12);
 }
 
 .login__container>img {
