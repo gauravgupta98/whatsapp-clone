@@ -4,11 +4,6 @@
 # WhatsApp Web Clone
 
 Full stack WhatsApp Web clone.
-
-### Shoutout to **Stargazers**
-
-[![Stargazers repo roster for @gauravgupta98/whatsapp-clone](https://reporoster.com/stars/gauravgupta98/whatsapp-clone)](https://github.com/gauravgupta98/whatsapp-clone/stargazers)
-
 Tech Stack and NPM Packages used -
 
 1. react
