@@ -27,3 +27,33 @@ a {
 .sidebarChat__info>p {
     word-break: break-all;
 }
+
+.ReactModal__Content>h1 {
+    color: black;
+    margin: 5px;
+}
+
+.ReactModal__Content>form>input {
+    margin: 10px;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 39px;
+    border:none;
+}
+
+.ReactModal__Content>form>button {
+    height: 50px;
+    border: none;
+    color: white;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: #0a8d48;
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.ReactModal__Content>form {
+    margin-left: 5px;
+}
