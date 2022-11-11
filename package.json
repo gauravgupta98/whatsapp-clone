@@ -9,7 +9,7 @@
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.4.3",
     "emoji-picker-react": "^4.4.4",
-    "firebase": "^9.13.0",
+    "firebase": "^9.14.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-modal": "^3.16.1",
