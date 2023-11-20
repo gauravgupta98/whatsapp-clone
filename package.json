@@ -8,7 +8,7 @@
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.5.1",
-    "emoji-picker-react": "^4.5.15",
+    "emoji-picker-react": "^4.5.16",
     "firebase": "^10.6.0",
     "react": "^17.0.2",
     "react-dom": "^18.2.0",
